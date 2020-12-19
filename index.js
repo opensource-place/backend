@@ -1,22 +1,26 @@
 const express = require('express')
-const dotenv = require('dotenv')
-const path = require('path')
-
-const routers = require("./routers");
-
-
-// Enviroment Variables
-dotenv.config({
-  path: "./config/env/config.env"
-});
-
+const got = require('got')
 const app = express()
 
-const PORT = process.env.PORT;
+// get env
+require('dotenv').config()
 
-// Routers Middleware
-app.use("/",routers);
+// issue route
+app.get('/:user/:repo', async (req, res) => {
+	const issues = await gatherIssues(req.params.user, req.params.repo)
+	res.send(issues)
+})
 
-app.listen(PORT, () => {
-  console.log(`App Started on ${PORT} : ${process.env.NODE_ENV}`);
-});
+// routers middleware
+app.get('/', (req, res) => res.send('Hello World!'))
+
+// gather issues
+async function gatherIssues(user, repo) {
+	const url = `https://api.github.com/repos/${user}/${repo}/issues`
+	const res = await got(url)
+	return JSON.parse(res.body)
+}
+
+// listen
+const PORT = process.env.PORT || 8080
+app.listen(PORT, () => console.log(`running on ${PORT}`));
