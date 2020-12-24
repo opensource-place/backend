@@ -14,7 +14,6 @@ router.get('/', (req, res) => res.send('Hello World!'))
 // issues middleware
 router.get('/:user/:repo', issueRouter)
 
-
 // Add - Get Mongo
 router.get('/add', addData)
 router.get('/all', allData)
