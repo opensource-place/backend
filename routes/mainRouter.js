@@ -5,30 +5,20 @@ const got = require('got')
 const addData = require('../database/addData')
 const allData = require('../database/allData')
 const singleData = require('../database/singleData')
+const issueRouter = require('./issueRouter')
+const notFound = require('./notFound')
 
 // routers middleware
 router.get('/', (req, res) => res.send('Hello World!'))
 
-// issue route
-router.get('/:user/:repo', async (req, res) => {
-    const issues = await gatherIssues(req.params.user, req.params.repo)
-    res.send(issues)
-})
+// issues middleware
+router.get('/:user/:repo', issueRouter)
 
 
 // Add - Get Mongo
 router.get('/add', addData)
 router.get('/all', allData)
 router.get('/single', singleData)
-
-// gather issues
-async function gatherIssues(user, repo) {
-    const url = `https://api.github.com/repos/${user}/${repo}/issues`
-    const res = await got(url)
-    return JSON.parse(res.body)
-}
-
-
 
 
 module.exports = router;
