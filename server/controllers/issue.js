@@ -2,14 +2,11 @@ const got = require('got')
 
 const getIssues = async (req, res) => {
     const issues = await gatherIssues(req.params.user, req.params.repo)
-    let count = Object.keys(issues).length
-    console.log(count)
 
     //not best, better can be done
     let x = ``
     let y = `<br>`
-    for (let i = 0; i < count; i++) {
-        // console.log(issues[i].title)
+    for (let i = 0; i < Object.keys(issues).length ; i++) {
         x += `${issues[i].title} ${y}`
     }
 
