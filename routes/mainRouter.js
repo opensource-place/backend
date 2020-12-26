@@ -2,9 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const got = require('got')
-const addData = require('../database/addData')
-const allData = require('../database/allData')
-const singleData = require('../database/singleData')
+const data = require("../controllers/database")
 
 const {
     getAllDataToDB,
@@ -22,9 +20,9 @@ router.get('/', (req, res) => res.send('Hello World!'))
 router.get('/:user/:repo', getIssues)
 
 // Add - Get Mongo
-router.get('/add', addData)
-router.get('/all', allData)
-router.get('/single', singleData)
+router.get('/add', data.addDataToDB)
+router.get('/all', data.getAllDataToDB)
+router.get('/single', data.getSingleDataToDB)
 
 
 module.exports = router;
