@@ -8,8 +8,10 @@
 ```
 #install dependencies
 npm install
+cd client
+npm install
 # start
-npm start
+npm run dev
 ```
 
 
