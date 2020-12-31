@@ -1,15 +1,21 @@
 import { Component } from "react";
-import { BrowserRouter,Route } from 'react-router-dom';
-import MainPage from './pages/MainPage';
+import { BrowserRouter, Route } from "react-router-dom";
+import Projects from "./pages/Projects";
+import LandingPage from "./pages/LandingPage";
+import Start from "./pages/Start";
+import Doc from "./pages/Doc";
+
 class Router extends Component {
-    render(){
-        return(
-            <BrowserRouter>
-                <Route exact path="/" render={()=><h1>test</h1>} />
-                <Route exact path="/home" component={MainPage} />
-            </BrowserRouter>
-        );
-    }
+  render() {
+    return (
+      <BrowserRouter>
+        <Route exact path="/" component={LandingPage} />
+        <Route path="/projects" component={Projects} />
+        <Route path="/start" component={Start} />
+        <Route path="/doc" component={Doc} />
+      </BrowserRouter>
+    );
+  }
 }
 
 export default Router;
