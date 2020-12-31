@@ -22,9 +22,13 @@ const Start = () => {
   }, [notes]);
 
   return (
-    <div>
-      <input type="text" placeholder="Github username" name="note" />
-      <button type="Submit">Add Project</button>
+    <div className="container">
+      <div className="row mt-3">
+        <div className="d-flex justify-content-center align-items-center flex-row">
+          <input type="text" className="form-control" placeholder="Github username" name="note" />
+          <button type="Submit" className="w-25 form-control btn btn-primary">Add Project</button>
+        </div>
+      </div>
     </div>
   );
 };

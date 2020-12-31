@@ -5,8 +5,7 @@ export default class Projects extends React.Component {
   state = {
     persons: [],
   };
-
-  componentDidMount() {
+  dataFetch = () => {
     axios
       .get("https://api.github.com/repos/furkanportakal/opensourceadam/issues")
       .then((res) => {
@@ -14,6 +13,9 @@ export default class Projects extends React.Component {
         this.setState({ persons });
         console.log(this.state.persons);
       });
+  }
+  componentDidMount() {
+    this.dataFetch();
   }
 
   render() {
