@@ -1,25 +1,24 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
-export default class Projects extends React.Component {
-  state = {
-    persons: [],
-  };
-  dataFetch = () => {
+const Projects = () => {
+  const [persons, setPersons] = useState([])
+
+  useEffect(() => {
+    dataFetch();
+  }, [])
+
+  const dataFetch = () => {
     axios
       .get("https://api.github.com/repos/furkanportakal/opensourceadam/issues")
       .then((res) => {
         const persons = res.data;
-        this.setState({ persons });
-        console.log(this.state.persons);
+        setPersons(persons)
+        console.log(persons);
       });
   }
-  componentDidMount() {
-    this.dataFetch();
-  }
 
-  render() {
-    const getUser = this.state.persons;
-    return getUser.map((person, index) => <li key={index}>{person.title}</li>);
-  }
+  return persons.map((person, index) => <li key={index}>{person.title}</li>);
 }
+
+export default Projects
