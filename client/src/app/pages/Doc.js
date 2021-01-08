@@ -1,11 +1,11 @@
 import React from "react";
+import {NavBar} from "../components/nav-bar";
 
 const Doc = () => {
   return (
-    <div className="flex justify-between items-center dark:bg-gray-900 ">
-      <div className="flex items-center">
-        <h1>Doc</h1>
-      </div>
+    <div className="min-h-screen flex flex-col items-center dark:bg-gray-800 bg-gray-200">
+      <NavBar />
+      <h1>Documents</h1>
     </div>
   );
 };

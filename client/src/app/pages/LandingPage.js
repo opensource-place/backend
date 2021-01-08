@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const LandingPage = () => {
   return (
-    <div className="min-h-screen flex flex-col items-center bg-gray-800">
+    <div className="min-h-screen flex flex-col items-center dark:bg-gray-800 bg-gray-200">
       <NavBar />
       <div className="flex flex-col items-center justify-center p-4 m-8 border-2 border-light-blue-500 border-opacity-100 ">
         <h2 className="text-center pt-1  mt-4 ">
