@@ -1,5 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import {NavBar} from "../components/nav-bar";
 
 const Start = () => {
   const [notes, setNotes] = useState([]);
@@ -22,7 +23,9 @@ const Start = () => {
   }, [notes]);
 
   return (
-    <div className="container">
+    <div className="min-h-screen flex flex-col items-center dark:bg-gray-800 bg-gray-200">
+      <NavBar />
+      <div className="container">
       <div className="row mt-3">
         <div className="d-flex justify-content-center align-items-center flex-row">
           <input
@@ -36,6 +39,7 @@ const Start = () => {
           </button>
         </div>
       </div>
+    </div>
     </div>
   );
 };
