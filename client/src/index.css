@@ -4,11 +4,18 @@
 @tailwind utilities;
 
 
+body {
+	@apply text-gray-500;
+	font-family: 'Open Sans', sans-serif;
+}
+
 @layer base {
 	h1 {
 		@apply text-2xl;
+		@apply text-green-600;
 	}
 	h2 {
 		@apply text-xl;
+		@apply text-green-600;
 	}
 }
