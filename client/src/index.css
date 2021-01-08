@@ -3,20 +3,16 @@
 @tailwind components;
 @tailwind utilities;
 
-
-body {
-	@apply text-gray-700;
-	@apply dark:text-gray-400;
-	font-family: 'Open Sans', sans-serif;
-}
+body {font-family: 'Open Sans', sans-serif;}
 
 @layer base {
+	#root {
+		@apply text-gray-500 bg-gray-100 dark:bg-gray-800 dark:text-gray-400 ;
+	}
 	h1 {
-		@apply text-2xl;
-		@apply text-green-600;
+		@apply text-2xl text-green-600;
 	}
 	h2 {
-		@apply text-xl;
-		@apply text-green-600;
+		@apply text-xl text-green-600;
 	}
 }
