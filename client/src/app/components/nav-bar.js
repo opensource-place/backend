@@ -10,13 +10,11 @@ export const NavBar = () => (
           <h1 className="hover:text-gray-100">Open Source Adam</h1>
         </div>
         <div className="ml-2" id="mobileMenu">
-
           <Link to="/projects" className="ml-2">Projects</Link>
           <Link to="/start" className="ml-2">Start</Link>
           <Link to="/doc" className="ml-2">Documents</Link>
         </div>
       </div>
-
     </nav>
   </div>
 );
