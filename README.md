@@ -13,9 +13,9 @@ npm install
 # start
 npm run dev
 ```
+## CSS Library
+We use tailwind css as the css library. You can access the documentation [here](https://tailwindcss.com/docs).
 
-NOTE: Since Create React App doesn't let you override the PostCSS configuration natively, we also need to install CRACO to be able to configure Tailwind:
-[**Tailwindcss CRACO**](https://tailwindcss.com/docs/guides/create-react-app)<br>
 
 ## 📙 Features to be added
 - Get issues of the project
