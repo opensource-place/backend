@@ -13,6 +13,8 @@ npm install
 # start
 npm run dev
 ```
+## CSS Library
+We use tailwind css as the css library. You can access the documentation [here](https://tailwindcss.com/docs).
 
 
 ## 📙 Features to be added
