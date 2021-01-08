@@ -1,24 +1,14 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
+import { NavBar } from "../components/nav-bar";
+import { ProjectList } from "../components/project-list";
 
 const Projects = () => {
-  const [persons, setPersons] = useState([])
+  return (
+      <div className="min-h-screen">
+        <NavBar></NavBar>
+        <ProjectList></ProjectList>
+    </div>
+  );
+};
 
-  useEffect(() => {
-    dataFetch();
-  }, [])
-
-  const dataFetch = () => {
-    axios
-      .get("https://api.github.com/repos/furkanportakal/opensourceadam/issues")
-      .then((res) => {
-        const persons = res.data;
-        setPersons(persons)
-        console.log(persons);
-      });
-  }
-
-  return persons.map((person, index) => <li key={index}>{person.title}</li>);
-}
-
-export default Projects
+export default Projects;

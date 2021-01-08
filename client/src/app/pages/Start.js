@@ -1,5 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import {NavBar} from "../components/nav-bar";
 
 const Start = () => {
   const [notes, setNotes] = useState([]);
@@ -22,11 +23,14 @@ const Start = () => {
   }, [notes]);
 
   return (
-    <div className="container">
-      <div className="row mt-3">
-        <div className="d-flex justify-content-center align-items-center flex-row">
-          <input type="text" className="form-control" placeholder="GitHub Repository URL (furkanportakal/opensourceadam)" name="note" />
-          <button type="Submit" className="w-25 form-control btn btn-primary">Add Project</button>
+    <div className="min-h-screen">
+      <NavBar></NavBar>
+      <div className="container">
+        <div className="row mt-3">
+          <div className="d-flex justify-content-center align-items-center flex-row">
+            <input type="text" className="form-control" placeholder="GitHub Repository URL (furkanportakal/opensourceadam)" name="note" />
+            <button type="Submit" className="w-25 form-control btn btn-primary">Add Project</button>
+          </div>
         </div>
       </div>
     </div>

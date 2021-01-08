@@ -5,7 +5,8 @@
 
 
 body {
-	@apply text-gray-500;
+	@apply text-gray-700;
+	@apply dark:text-gray-400;
 	font-family: 'Open Sans', sans-serif;
 }
 
