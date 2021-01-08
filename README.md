@@ -4,7 +4,7 @@
 
 
 
-## ⚒️ Build Setup 
+## ⚒️ Build Setup
 ```
 #install dependencies
 npm install
@@ -14,11 +14,13 @@ npm install
 npm run dev
 ```
 
+NOTE: Since Create React App doesn't let you override the PostCSS configuration natively, we also need to install CRACO to be able to configure Tailwind:
+[**Tailwindcss CRACO**](https://tailwindcss.com/docs/guides/create-react-app)<br>
 
 ## 📙 Features to be added
 - Get issues of the project
 - Categorizing issues with a label
 - Categorizing project/issues with a programming language
 - Rank system
-- Sorting by ıssue solving 
+- Sorting by ıssue solving
 - Detail page where people can access information about the issues they contributed and solved
