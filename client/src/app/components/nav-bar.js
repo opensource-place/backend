@@ -11,7 +11,7 @@ export const NavBar = () => (
             <h1 className="hover:text-green-500">Open Source Adam</h1>
           </div>
         </Link>
-        <div className="ml-2" id="mobileMenu">
+        <div className="ml-2"  id="mobileMenu">
           <Link to="/projects" className="ml-3">
             Projects
           </Link>

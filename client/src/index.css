@@ -17,6 +17,9 @@ body {font-family: 'Open Sans', sans-serif;}
         @apply text-xl text-green-600;
     }
     a {
-
+        @apply text-green-600 hover:text-green-500;
+    }
+    .primary-button {
+        @apply px-8 py-2 text-gray-900 bg-green-300 max-w-max shadow-sm tracking-widest hover:shadow-lg;
     }
 }
