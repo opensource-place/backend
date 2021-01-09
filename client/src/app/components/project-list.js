@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 export const ProjectList = () => {
-  const [persons, setPersons] = useState([])
+  const [issues, setIssues] = useState([])
 
   useEffect(() => {
     dataFetch();
@@ -10,14 +10,16 @@ export const ProjectList = () => {
 
   const dataFetch = () => {
     axios
-      .get("https://api.github.com/repos/furkanportakal/opensourceadam/issues")
+      .get("https://api.github.com/repos/FurkanPortakal/opensourceadam/issues")
       .then((res) => {
-        const persons = res.data;
-        setPersons(persons)
-        console.log(persons);
+        const issues = res.data;
+        setIssues(issues)
+        console.log(issues);
       });
   }
 
-  return persons.map((person, index) =>
-    <li key={index}>{person.title}</li>);
+  return issues.map((issue, index) =>
+    <li key={index} className="flex-row">
+      <a href={issue.html_url} target="_blank">{issue.title}</a>
+    </li>);
 }
