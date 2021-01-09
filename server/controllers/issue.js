@@ -13,6 +13,7 @@ const getIssues = async (req, res) => {
     res.send(x)
 }
 
+
 // gather issues
 async function gatherIssues(user, repo) {
     const url = `https://api.github.com/repos/${user}/${repo}/issues`
