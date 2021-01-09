@@ -8,7 +8,7 @@ const Start = () => {
 
   const addIssue = (e) => {
     e.preventDefault();
-    axios.post("http://localhost:5000/start/issues", {
+    axios.post("http://localhost:5000/start/repos", {
       url: issue,
     });
   };

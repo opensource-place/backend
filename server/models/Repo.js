@@ -13,4 +13,4 @@ const RepoSchema = new Schema({
     },
 });
 
-module.exports = mongoose.model("issue", RepoSchema);
+module.exports = mongoose.model("repo", RepoSchema);

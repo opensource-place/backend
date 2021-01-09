@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 
 const connectDatabase = () => {
-    console.log(process.env.MONGO_URI);
     mongoose
         .connect(
             process.env.MONGO_URI || "mongodb://localhost/open-source-adam",
