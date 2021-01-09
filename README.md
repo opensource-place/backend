@@ -7,11 +7,17 @@
 ## ⚒️ Build Setup
 ```
 #install dependencies
-npm install
+
+#for server
+cd server
+npm install 
+npm run dev
+
+#for client
 cd client
 npm install
-# start
-npm run dev
+npm start
+
 ```
 ## CSS Library
 We use tailwind css as the css library. You can access the documentation [here](https://tailwindcss.com/docs).

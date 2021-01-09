@@ -1,4 +1,6 @@
-const Repo = require("../models/Repo");
+const Repo = require("../models/repo");
+const Issue = require("../models/issue");
+const { gatherIssues } = require("./issue");
 
 const addDataToDB = (req, res) => {
     const repo = new Repo({
@@ -34,22 +36,28 @@ const getSingleDataToDB = (req, res) => {
         });
 };
 
-const addIssues = (req, res) => {
+const addRepo = async (req, res) => {
     const url = req.body.url;
     const pars = url.split("/");
-
     const repo = new Repo({
         userName: pars[3],
         repoName: pars[4],
     });
-
-    repo.save()
-        .then((result) => {
-            res.send(result);
-        })
-        .catch((err) => {
-            console.log(err);
+    try {
+        const repoSave = await repo.save();
+        const projectIssues = await gatherIssues(
+            repoSave.userName,
+            repoSave.repoName
+        );
+        const issue = new Issue({
+            projectID: repoSave._id,
+            issues: projectIssues,
         });
+        const issueSave = await issue.save();
+        res.send(issueSave);
+    } catch (error) {
+        console.log(error);
+    }
 };
 
-module.exports = { getSingleDataToDB, getAllDataToDB, addDataToDB, addIssues };
+module.exports = { getSingleDataToDB, getAllDataToDB, addDataToDB, addRepo };

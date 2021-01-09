@@ -5,7 +5,7 @@ const {
     getAllDataToDB,
     addDataToDB,
     getSingleDataToDB,
-    addIssues,
+    addRepo,
 } = require("../controllers/database");
 
 const { getIssues } = require("../controllers/issue");
@@ -18,7 +18,7 @@ router.get("/", (req, res) => res.send("Hello World!"));
 router.get("/:user/:repo", getIssues);
 
 // issue add
-router.post("/start/issues", addIssues);
+router.post("/start/repos", addRepo);
 
 // Add - Get Mongo
 router.get("/add", addDataToDB);

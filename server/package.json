@@ -4,10 +4,8 @@
   "description": "- We want to build a platform which contents open-source projects. You can list all published open-source projects and also you can publish your project too from GitHub.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "cd server && node index.js",
-    "start-watch": "cd server && nodemon index.js",
-    "dev": "concurrently \"cd server && npm run start-watch\" \"cd client && npm start\""
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "repository": {
     "type": "git",
