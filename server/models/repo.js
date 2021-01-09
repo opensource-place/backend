@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
+// repo Schema
 const RepoSchema = new Schema({
     userName: {
         type: String,
