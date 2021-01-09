@@ -35,23 +35,21 @@ const getSingleDataToDB = (req, res) => {
 };
 
 const addIssues = (req, res) => {
-    console.log(req.body);
-    // res.send(req.body);
-    // const url = req.body.url;
-    // const pars = url.split("/");
-    //
-    // const repo = new Repo({
-    //     userName: pars[3],
-    //     repoName: pars[4],
-    // });
-    //
-    // repo.save()
-    //     .then((result) => {
-    //         res.send(result);
-    //     })
-    //     .catch((err) => {
-    //         console.log(err);
-    //     });
+    const url = req.body.url;
+    const pars = url.split("/");
+
+    const repo = new Repo({
+        userName: pars[3],
+        repoName: pars[4],
+    });
+
+    repo.save()
+        .then((result) => {
+            res.send(result);
+        })
+        .catch((err) => {
+            console.log(err);
+        });
 };
 
 module.exports = { getSingleDataToDB, getAllDataToDB, addDataToDB, addIssues };

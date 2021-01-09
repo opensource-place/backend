@@ -1,16 +1,16 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
-const Schema = mongoose.Schema
+const Schema = mongoose.Schema;
 
 const RepoSchema = new Schema({
     userName: {
         type: String,
-        require: true
+        require: true,
     },
     repoName: {
         type: String,
-        require: true
-    }
-})
+        require: true,
+    },
+});
 
-module.exports = mongoose.model('Repo', RepoSchema);
+module.exports = mongoose.model("issue", RepoSchema);
