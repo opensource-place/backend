@@ -1,6 +1,7 @@
 const Repo = require("../models/repo");
 const Issue = require("../models/issue");
 const { gatherIssues } = require("./issue");
+const checkEmptyField = require('../utils/checkEmptyField');
 
 const addDataToDB = (req, res) => {
     const repo = new Repo({
@@ -36,28 +37,35 @@ const getSingleDataToDB = (req, res) => {
         });
 };
 
-const addRepo = async (req, res) => {
-    const url = req.body.url;
-    const pars = url.split("/");
-    const repo = new Repo({
-        userName: pars[3],
-        repoName: pars[4],
-    });
-    try {
-        const repoSave = await repo.save();
-        const projectIssues = await gatherIssues(
-            repoSave.userName,
-            repoSave.repoName
-        );
-        const issue = new Issue({
-            projectID: repoSave._id,
-            issues: projectIssues,
+const addRepo = async(req, res) => {
+
+    const { url } = req.body;
+    const checkEmptyArea = checkEmptyField(url);
+    if (checkEmptyArea) {
+        const pars = url.split("/");
+        const repo = new Repo({
+            userName: pars[3],
+            repoName: pars[4],
         });
-        const issueSave = await issue.save();
-        res.send(issueSave);
-    } catch (error) {
-        console.log(error);
+        try {
+            const repoSave = await repo.save();
+            const projectIssues = await gatherIssues(
+                repoSave.userName,
+                repoSave.repoName
+            );
+            const issue = new Issue({
+                projectID: repoSave._id,
+                issues: projectIssues,
+            });
+            const issueSave = await issue.save();
+            res.json({ issueSave, result: true, msg: "registered successfully." });
+        } catch (error) {
+            console.log(error);
+        }
+    } else {
+        res.json({ result: true, msg: "Fields cannot be empty." });
     }
+
 };
 
 module.exports = { getSingleDataToDB, getAllDataToDB, addDataToDB, addRepo };

@@ -1,9 +1,7 @@
 const mongoose = require("mongoose");
 
-const Schema = mongoose.Schema;
-
 // repo Schema
-const RepoSchema = new Schema({
+const RepoSchema = new mongoose.Schema({
     userName: {
         type: String,
         require: true,
