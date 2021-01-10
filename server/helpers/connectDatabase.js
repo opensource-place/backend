@@ -3,8 +3,7 @@ const mongoose = require("mongoose");
 const connectDatabase = () => {
     mongoose
         .connect(
-            process.env.MONGO_URI || "mongodb://localhost/open-source-adam",
-            {
+            process.env.MONGO_URI || "mongodb://localhost/open-source-adam", {
                 useNewUrlParser: true,
                 useFindAndModify: false,
                 useCreateIndex: true,

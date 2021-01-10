@@ -2,10 +2,8 @@ require("dotenv").config();
 const express = require("express");
 const connectDatabase = require("./helpers/connectDatabase");
 const mainRouter = require("./routes/mainRouter");
-const notFound = require("./routes/notFound.js");
 const app = express();
 const cors = require("cors");
-const bodyParser = require("body-parser");
 
 // Main Router
 app.use(cors());

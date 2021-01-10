@@ -5,11 +5,15 @@ import axios from "axios";
 
 const Start = () => {
   const [issue, setIssue] = useState("");
-
+  const [getDBStatus,setDBStatus] = useState(false);
+  const [getDBStatusMSG,setDBStatusMSG] = useState("");
   const addIssue = (e) => {
     e.preventDefault();
-    axios.post("http://localhost:5000/start/repos", {
+    axios.post("/start/repos", {
       url: issue,
+    }).then(({data})=>{
+      setDBStatus(data.result);
+      setDBStatusMSG(data.msg)
     });
   };
 
@@ -18,6 +22,11 @@ const Start = () => {
   return (
     <div className="min-h-screen flex flex-col items-center dark:bg-gray-800 bg-gray-200">
       <NavBar />
+      {getDBStatus ? (
+        <div className="alert alert-primary my-3 " role="alert">
+          {getDBStatusMSG}
+        </div>
+      ) : null}
       <div className="container">
         <div className="row mt-3">
           <div className="d-flex justify-content-center align-items-center flex-row">
