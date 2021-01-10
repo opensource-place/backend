@@ -1,6 +1,6 @@
 import React from "react";
 import { NavBar } from "../components/nav-bar";
-import { ProjectList } from "../components/project-list";
+import { IssueList } from "../components/issue-list";
 
 const Projects = () => {
   return (
@@ -8,9 +8,8 @@ const Projects = () => {
       <NavBar />
       <div className="p-4">
         <h1 className="mb-3">Project List</h1>
-        <ProjectList/>
+        <IssueList repository_slug={'ozlemts/React-Next10-Tailwind2-Starter'}/>
       </div>
-
     </div>
   );
 };
