@@ -1,24 +1,19 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
+import { NavBar } from "../components/nav-bar";
+import { IssueList } from "../components/issue-list";
 
 const Projects = () => {
-  const [persons, setPersons] = useState([])
+  return (
+    <div className="min-h-screen flex flex-col dark:bg-gray-800 bg-gray-200">
+      <NavBar />
+      <div className="p-4">
+        <h1 className="mb-3">Project List</h1>
+        <IssueList repository_slug={'ozlemts/React-Next10-Tailwind2-Starter'}/>
+      </div>
+    </div>
+  );
+};
 
-  useEffect(() => {
-    dataFetch();
-  }, [])
+export default Projects;
 
-  const dataFetch = () => {
-    axios
-      .get("https://api.github.com/repos/furkanportakal/opensourceadam/issues")
-      .then((res) => {
-        const persons = res.data;
-        setPersons(persons)
-        console.log(persons);
-      });
-  }
 
-  return persons.map((person, index) => <li key={index}>{person.title}</li>);
-}
-
-export default Projects

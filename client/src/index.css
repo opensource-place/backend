@@ -2,3 +2,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+body {font-family: 'Open Sans', sans-serif;}
+
+@layer base {
+    #root {
+        @apply text-gray-500 bg-gray-100 dark:text-gray-400 dark:bg-gray-800  ;
+    }
+    h1 {
+        @apply text-2xl text-green-600;
+    }
+    h2 {
+        @apply text-xl text-green-600;
+    }
+    a {
+        @apply text-green-600 hover:text-green-500;
+    }
+    .primary-button {
+        @apply px-8 py-2 text-gray-900 bg-green-300 max-w-max shadow-sm tracking-widest hover:shadow-lg;
+    }
+}
