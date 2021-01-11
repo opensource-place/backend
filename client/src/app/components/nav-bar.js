@@ -7,7 +7,7 @@ export const NavBar = () => (
       <div className="flex justify-between items-center w-screen px-5 py-2">
         <Link to="/">
           <div className="flex items-center">
-            <img className="h-12 mr-2" src="/logo.png" />
+            <img className="h-12 mr-2" src="/logo.png" alt="Our Logo" />
             <h1 className="hover:text-green-500">Open Source Adam</h1>
           </div>
         </Link>
@@ -17,6 +17,9 @@ export const NavBar = () => (
           </Link>
           <Link to="/doc" className="ml-3">
             Documents
+          </Link>
+          <Link to="/login" className="ml-3 primary-button">
+            Login
           </Link>
         </div>
       </div>
