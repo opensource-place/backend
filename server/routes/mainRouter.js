@@ -8,8 +8,12 @@ const {
     addRepo,
 } = require("../controllers/database");
 
+const { githubCallback } = require('../helpers/githubCallback.js')
 const { getIssues } = require("../controllers/issue");
 const notFound = require("./notFound");
+
+// github callback
+router.get('/login/success', githubCallback)
 
 // routers middleware
 router.get("/", (req, res) => res.send("Hello World!"));
