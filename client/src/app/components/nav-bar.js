@@ -8,7 +8,9 @@ export const NavBar = () => (
         <Link to="/">
           <div className="flex items-center">
             <img className="h-12 mr-2" src="/logo.png" alt="Our Logo" />
-            <h1 className="hover:text-green-500 hidden md:block">Open Source Adam</h1>
+            <h1 className="hover:text-green-500 hidden md:block">
+              Open Source Adam
+            </h1>
           </div>
         </Link>
         <div className="ml-2" id="mobileMenu">
@@ -24,7 +26,6 @@ export const NavBar = () => (
         </div>
       </div>
     </nav>
-    
   </div>
 );
 
