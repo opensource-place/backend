@@ -1,5 +1,6 @@
 import React from "react";
 import { NavBar } from "../components/nav-bar";
+import { Footer } from "../components/footer";
 import { Link } from "react-router-dom";
 
 const LandingPage = () => {
@@ -22,6 +23,7 @@ const LandingPage = () => {
           <button className="uppercase primary-button">Start</button>
         </Link>
       </div>
+      <Footer />
     </div>
   );
 };

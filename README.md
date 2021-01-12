@@ -4,7 +4,7 @@
 
 
 
-## ⚒️ Build Setup
+## ⚒️ Build Setup 
 ```
 #install dependencies
 
@@ -28,5 +28,5 @@ We use tailwind css as the css library. You can access the documentation [here](
 - Categorizing issues with a label
 - Categorizing project/issues with a programming language
 - Rank system
-- Sorting by ıssue solving
+- Sorting by ıssue solving 
 - Detail page where people can access information about the issues they contributed and solved
