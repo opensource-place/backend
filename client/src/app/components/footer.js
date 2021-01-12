@@ -1,19 +1,18 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 export const Footer = () => (
   <div class="flex flex-wrap justify-center bg-800 p-16 text-center">
     <div class="flex flex-wrap mb-4 w-full ">
       <div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/3">
-        <h3 class="text-2xl py-4 ">About Us</h3>
+        <h3>About Us</h3>
         <p>
-          We want to build a platform which contents open-source projects. You
-          can list all published open-source projects and also you can publish
-          your project too from GitHub.
+          We are a developer team came together by <a href="https://findmentor.network/" target="_blank">findmentor </a> collaboration.
+          We want to build a platform, in there you can search open-source GitHub repositories according to your interest.
+          To get contributors all around the world easily, add your open source projects into the our list!
         </p>
       </div>
       <div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/3 ">
-        <h3 class="text-xl py-4 flex-wrap ">Socials</h3>
+        <h3 class="text-xl py-4 flex-wrap">Socials</h3>
         <ul>
           <li></li>
           <li>
