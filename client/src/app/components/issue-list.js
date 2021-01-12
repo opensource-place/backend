@@ -11,7 +11,8 @@ export const IssueList = (props) => {
   const dataFetch = () => {
     let url =
       "https://api.github.com/repos/" + props.repository_slug + "/issues";
-    axios.get(url).then((res) => {
+    axios.
+    get(url).then((res) => {
       const issues = res.data;
       setIssues(issues);
       console.log(issues);
