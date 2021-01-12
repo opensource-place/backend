@@ -1,28 +1,43 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import React from 'react';
+import { ProjectCard } from './project-card';
+import SearchBox from "./search-box";
 
-export const ProjectList = () => {
-  const [issues, setIssues] = useState([]);
+class ProjectList extends React.Component {
+  constructor() {
+    super();
 
-  useEffect(() => {
-    dataFetch();
-  }, []);
+    this.state = {
+      repository_slug_list: ['ozlemts/React-Next10-Tailwind2-Starter', 'FurkanPortakal/opensourceadam', 'tailwindlabs/tailwindcss', 'vercel/vercel'],
+      searchField:''
+    };
+  }
 
-  const dataFetch = () => {
-    axios
-      .get("https://api.github.com/repos/FurkanPortakal/opensourceadam/issues")
-      .then((res) => {
-        const issues = res.data;
-        setIssues(issues);
-        console.log(issues);
-      });
-  };
+  componentDidMount() {}
 
-  return issues.map((issue, index) => (
-    <li key={index} className="flex-row">
-      <a className="flex items-center" href={issue.html_url} target="_blank">
-        {issue.title}
-      </a>
-    </li>
-  ));
-};
+  handleChange = (e) => {
+    this.setState({searchField: e.target.value})
+  }
+
+  render() {
+    const {repository_slug_list, searchField} = this.state;
+    const filtered_repository_slug_list = repository_slug_list.filter(e =>
+      e.toLowerCase().includes(searchField.toLowerCase())
+    );
+
+    return (
+      <div className="w-full">
+        <SearchBox
+          placeholder="Search Projects..."
+          handleChange={ e => this.handleChange(e)}/>
+        <div className='flex'>
+          {filtered_repository_slug_list.map(e => (
+            <ProjectCard key={e.id} repository_slug={e}></ProjectCard>
+          ))}
+        </div>
+      </div>
+    )
+  }
+}
+
+export default ProjectList;
+
