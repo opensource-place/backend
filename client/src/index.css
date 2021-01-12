@@ -17,8 +17,12 @@ body {
   h2 {
     @apply text-xl text-green-600;
   }
+
+  h3 {
+    @apply text-xl text-gray-700 dark:text-gray-300;
+  }
   a {
-    @apply text-green-600 hover:text-green-500;
+    @apply text-yellow-600 hover:text-yellow-500;
   }
   p {
     @apply text-green-600 hover:text-green-500;
