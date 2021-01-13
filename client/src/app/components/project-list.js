@@ -1,24 +1,33 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ProjectCard } from "./project-card";
 import SearchBox from "./search-box";
-import
+import axios from "axios";
 
 const ProjectList = () => {
-  const [repositorySlugList, setRepositorySlugList] = useState([
-    "ozlemts/React-Next10-Tailwind2-Starter",
-    "FurkanPortakal/opensourceadam",
-    "tailwindlabs/tailwindcss",
-    "vercel/vercel",
-  ]);
+  const [repositorySlugList, setRepositorySlugList] = useState([]);
+  const [filteredRepositories, setFilteredRepositories] = useState([]);
   const [searchField, setSearchField] = useState("");
+
+  useEffect(() => {
+    dataFetch();
+  }, []);
 
   const handleChange = (e) => {
     setSearchField(e.target.value);
+    const filteredRepos = repositorySlugList.filter((repo) =>
+      repo.repoName.startsWith(searchField)
+    );
+    setFilteredRepositories(filteredRepos);
   };
 
-  const filtered_repository_slug_list = repositorySlugList.filter((e) =>
-    e.toLowerCase().startsWith(searchField.toLowerCase())
-  );
+  const dataFetch = () => {
+    let url = process.env.REACT_APP_API_URL;
+    axios.get(`${url}/start/repos`).then((res) => {
+      const project_info = res.data;
+      setRepositorySlugList(project_info);
+      setFilteredRepositories(project_info);
+    });
+  };
 
   return (
     <div className="w-full">
@@ -27,8 +36,8 @@ const ProjectList = () => {
         handleChange={(e) => handleChange(e)}
       />
       <div className="flex">
-        {filtered_repository_slug_list.map((e) => (
-          <ProjectCard key={e.id} repository_slug={e}></ProjectCard>
+        {filteredRepositories.map((e, index) => (
+          <ProjectCard key={index} repoData={e}></ProjectCard>
         ))}
       </div>
     </div>
