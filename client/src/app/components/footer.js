@@ -6,9 +6,14 @@ export const Footer = () => (
       <div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/3">
         <h3>About Us</h3>
         <p>
-          We are a developer team came together by <a href="https://findmentor.network/" target="_blank">findmentor </a> collaboration.
-          We want to build a platform, in there you can search open-source GitHub repositories according to your interest.
-          To get contributors all around the world easily, add your open source projects into the our list!
+          We are a developer team came together by{" "}
+          <a href="https://findmentor.network/" target="_blank">
+            findmentor{" "}
+          </a>{" "}
+          collaboration. We want to build a platform, in there you can search
+          open-source GitHub repositories according to your interest. To get
+          contributors all around the world easily, add your open source
+          projects into the our list!
         </p>
       </div>
       <div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/3 ">

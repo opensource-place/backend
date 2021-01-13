@@ -15,7 +15,6 @@ export const IssueList = (props) => {
     get(url).then((res) => {
       const issues = res.data;
       setIssues(issues);
-      console.log(issues);
     });
   };
 

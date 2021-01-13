@@ -14,7 +14,7 @@ app.use(mainRouter);
 // app.use(bodyParser.urlencoded({ extended: false }));
 
 // Mongo Connection
-// connectDatabase();
+connectDatabase();
 
 // listen
 const PORT = process.env.PORT || 8080;

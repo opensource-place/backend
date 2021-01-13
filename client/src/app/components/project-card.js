@@ -9,15 +9,11 @@ export const ProjectCard = (props) => {
   }, []);
 
   const dataFetch = () => {
-    let url =
-      "https://api.github.com/repos/" + props.repository_slug;
-    axios
-      .get(url)
-      .then((res) => {
-        const project_info = res.data;
-        setProject(project_info);
-        console.log(project_info);
-      });
+    let url = "https://api.github.com/repos/" + props.repository_slug;
+    axios.get(url).then((res) => {
+      const project_info = res.data;
+      setProject(project_info);
+    });
   };
 
   return (
