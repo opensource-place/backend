@@ -1,20 +1,23 @@
-import React from "react";
 import { useEffect, useState } from "react";
 import { NavBar } from "../components/nav-bar";
 import axios from "axios";
 
 const Start = () => {
   const [issue, setIssue] = useState("");
-  const [getDBStatus,setDBStatus] = useState(false);
-  const [getDBStatusMSG,setDBStatusMSG] = useState("");
+  const [getDBStatus, setDBStatus] = useState(false);
+  const [getDBStatusMSG, setDBStatusMSG] = useState("");
+
   const addIssue = (e) => {
     e.preventDefault();
-    axios.post("/start/repos", {
-      url: issue,
-    }).then(({data})=>{
-      setDBStatus(data.result);
-      setDBStatusMSG(data.msg)
-    });
+    const url = process.env.REACT_APP_API_URL;
+    axios
+      .post(`${url}/start/repos`, {
+        url: issue,
+      })
+      .then(({ data }) => {
+        setDBStatus(data.result);
+        setDBStatusMSG(data.msg);
+      });
   };
 
   useEffect(() => {});

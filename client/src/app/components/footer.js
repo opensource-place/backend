@@ -1,9 +1,9 @@
 import React from "react";
 
 export const Footer = () => (
-  <div class="flex flex-wrap justify-center bg-800 p-16 text-center">
-    <div class="flex flex-wrap mb-4 w-full ">
-      <div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/3">
+  <div className="flex flex-wrap justify-center bg-800 p-16 text-center">
+    <div className="flex flex-wrap mb-4 w-full ">
+      <div className="w-full sm:w-1/2 md:w-1/2 lg:w-1/3">
         <h3>About Us</h3>
         <p>
           We are a developer team came together by{" "}
@@ -16,8 +16,8 @@ export const Footer = () => (
           projects into the our list!
         </p>
       </div>
-      <div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/3 ">
-        <h3 class="text-xl py-4 flex-wrap">Socials</h3>
+      <div className="w-full sm:w-1/2 md:w-1/2 lg:w-1/3 ">
+        <h3 className="text-xl py-4 flex-wrap">Socials</h3>
         <ul>
           <li></li>
           <li>
@@ -35,8 +35,8 @@ export const Footer = () => (
           </li>
         </ul>
       </div>
-      <div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/3">
-        <h3 class="text-xl py-4 flex-wrap">Join our community</h3>
+      <div className="w-full sm:w-1/2 md:w-1/2 lg:w-1/3">
+        <h3 className="text-xl py-4 flex-wrap">Join our community</h3>
         <ul>
           <li>
             <a href="https://discord.gg/NKy8NuJCZ5" target="_blank">
@@ -47,8 +47,8 @@ export const Footer = () => (
       </div>
     </div>
 
-    <div class="text bg-900 p-2 pl-6">
-      <p class="bottom">© Copyright 2021 - Open Source Adam</p>
+    <div className="text bg-900 p-2 pl-6">
+      <p className="bottom">© Copyright 2021 - Open Source Adam</p>
     </div>
   </div>
 );
