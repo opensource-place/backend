@@ -1,5 +1,4 @@
 const Repo = require("../models/repo");
-const Issue = require("../models/issue");
 const { gatherIssues } = require("./issue");
 const checkEmptyField = require("../utils/checkEmptyField");
 
@@ -38,26 +37,21 @@ const getSingleDataToDB = (req, res) => {
 
 const addRepo = async (req, res) => {
     const { url } = req.body;
+    //TODO need to check url is valid for github https://github.com/FurkanPortakal/opensourceadam -> valid, http://google.com/ -> not valid
     const checkEmptyArea = checkEmptyField(url);
     if (checkEmptyArea) {
         const pars = url.split("/");
-        const repo = new Repo({
-            userName: pars[3],
-            repoName: pars[4],
-        });
         try {
-            const repoSave = await repo.save();
-            const projectIssues = await gatherIssues(
-                repoSave.userName,
-                repoSave.repoName
-            );
-            const issue = new Issue({
-                projectID: repoSave._id,
+            const projectIssues = await gatherIssues(pars[3], pars[4]);
+            const repo = new Repo({
+                userName: pars[3],
+                repoName: pars[4],
                 issues: projectIssues,
             });
-            const issueSave = await issue.save();
+            const repoSave = await repo.save();
+
             res.json({
-                issueSave,
+                repoSave,
                 result: true,
                 msg: "registered successfully.",
             });

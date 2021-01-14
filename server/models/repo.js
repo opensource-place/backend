@@ -6,9 +6,17 @@ const RepoSchema = new mongoose.Schema({
         type: String,
         require: true,
     },
+    issues: {
+        type: Array,
+        require: true,
+    },
     repoName: {
         type: String,
         require: true,
+    },
+    updatedTime: {
+        type: Date,
+        default: new Date(),
     },
 });
 
