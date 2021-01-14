@@ -37,7 +37,7 @@ const ProjectList = () => {
       />
       <div className="flex">
         {filteredRepositories.map((e, index) => (
-          <ProjectCard key={index} repoData={e}></ProjectCard>
+          <ProjectCard key={index} repoData={e} />
         ))}
       </div>
     </div>
