@@ -7,18 +7,16 @@ import Start from "./pages/Start";
 import Doc from "./pages/Doc";
 import Login from "./pages/Login";
 
-class Router extends Component {
-  render() {
-    return (
-      <BrowserRouter>
-        <Route exact path="/" component={LandingPage} />
-        <Route path="/projects" component={Projects} />
-        <Route path="/start" component={Start} />
-        <Route path="/doc" component={Doc} />
-        <Route path="/login" component={Login} />
-      </BrowserRouter>
-    );
-  }
+const Router = () => {
+  return (
+    <BrowserRouter>
+      <Route exact path="/" component={LandingPage} />
+      <Route path="/projects" component={Projects} />
+      <Route path="/start" component={Start} />
+      <Route path="/doc" component={Doc} />
+      <Route path="/login" component={Login} />
+    </BrowserRouter>
+  );
 }
 
 export default Router;
