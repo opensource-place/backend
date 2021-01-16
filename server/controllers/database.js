@@ -37,15 +37,30 @@ const getSingleDataToDB = (req, res) => {
 
 const addRepo = async (req, res) => {
     const { url } = req.body;
-    //TODO need to check url is valid for github https://github.com/FurkanPortakal/opensourceadam -> valid, http://google.com/ -> not valid
     const checkEmptyArea = checkEmptyField(url);
     if (checkEmptyArea) {
-        const pars = url.split("/");
+        const parsedURL = url.split("/");
         try {
-            const projectIssues = await gatherIssues(pars[3], pars[4]);
+            if (parsedURL[2] !== "github.com") {
+                res.json({
+                    result: false,
+                    msg: "You need to enter a valid GitHub URL.",
+                });
+            }
+            const projectIssues = await gatherIssues(
+                parsedURL[3],
+                parsedURL[4]
+            );
+            if (projectIssues.length === 0) {
+                res.json({
+                    result: false,
+                    msg:
+                        "There aren't any issues here, you need to create an issue first.",
+                });
+            }
             const repo = new Repo({
-                userName: pars[3],
-                repoName: pars[4],
+                userName: parsedURL[3],
+                repoName: parsedURL[4],
                 issues: projectIssues,
             });
             const repoSave = await repo.save();
