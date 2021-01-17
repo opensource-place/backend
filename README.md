@@ -6,18 +6,18 @@
 
 ## ⚒️ Build Setup 
 ```
+We use **yarn** as the package manager
 #install dependencies
 
 #for server
 cd server
-npm install 
-npm run dev
+yarn install 
+yarn dev
 
 #for client
 cd client
-npm install
-npm start
-
+yarn install
+yarn start
 ```
 ## CSS Library
 We use tailwind css as the css library. You can access the documentation [here](https://tailwindcss.com/docs).
