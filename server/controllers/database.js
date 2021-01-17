@@ -39,19 +39,16 @@ const addRepo = async (req, res) => {
     const { url } = req.body;
     const checkEmptyArea = checkEmptyField(url);
     if (checkEmptyArea) {
-        const parsedURL = url.split("/");
+        const [, , domain, userName, repoName] = url.split("/");
         try {
-            if (parsedURL[2] !== "github.com") {
+            if (domain !== "github.com") {
                 res.json({
                     result: false,
                     msg: "You need to enter a valid GitHub URL.",
                 });
             }
-            const projectIssues = await gatherIssues(
-                parsedURL[3],
-                parsedURL[4]
-            );
-            if (projectIssues.length === 0) {
+            const issues = await gatherIssues(userName, repoName);
+            if (issues.length === 0) {
                 res.json({
                     result: false,
                     msg:
@@ -59,9 +56,9 @@ const addRepo = async (req, res) => {
                 });
             }
             const repo = new Repo({
-                userName: parsedURL[3],
-                repoName: parsedURL[4],
-                issues: projectIssues,
+                userName,
+                repoName,
+                issues,
             });
             const repoSave = await repo.save();
 
