@@ -94,7 +94,13 @@ const addRepo = async (req, res) => {
 const getSpecificRepo = async (req, res) => {
   try {
     const searchedRepo = await Repo.findOne({ repoName: req.params.reponame });
-    res.json(searchedRepo);
+    if (searchedRepo) {
+      res.json({ result: true, searchedRepo });
+    }
+    res.json({
+      result: false,
+      msg: "You are looking into space, cold and empty",
+    });
   } catch (error) {
     res.status(404).json({
       result: false,
