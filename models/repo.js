@@ -1,8 +1,7 @@
 const mongoose = require("mongoose");
 
-// repo Schema
-const RepoSchema = new mongoose.Schema({
-  userName: {
+const Repository = new mongoose.Schema({
+  pathname: {
     type: String,
     require: true,
   },
@@ -10,17 +9,10 @@ const RepoSchema = new mongoose.Schema({
     type: Array,
     require: true,
   },
-  repoName: {
-    type: String,
-    require: true,
-  },
-  repoSlug: {
-    type: String,
-  },
   updatedTime: {
     type: Date,
     default: new Date(),
   },
 });
 
-module.exports = mongoose.model("repo", RepoSchema);
+module.exports = mongoose.model("repo", Repository);
