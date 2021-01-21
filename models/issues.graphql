@@ -1,0 +1,52 @@
+type User {
+  login: String
+  id: Int
+  node_id: String
+  avatar_url: String
+  gravatar_id: String
+  url: String
+  html_url: String
+  followers_url: String
+  following_url: String
+  gists_url: String
+  starred_url: String
+  subscriptions_url: String
+  organizations_url: String
+  repos_url: String
+  events_url: String
+  received_events_url: String
+  type: String
+  site_admin: Boolean
+}
+
+type Issues {
+  url: String
+  repository_url: String
+  labels_url: String
+  comments_url: String
+  events_url: String
+  html_url: String
+  id: Int
+  node_id: String
+  number: Int
+  title: String
+  state: String
+  locked: Boolean
+  assignee: String
+  milestone: String
+  comments: Int
+  created_at: String
+  updated_at: String
+  closed_at: String
+  author_association: String
+  active_lock_reason: String
+  body: String
+  performed_via_github_app: String
+  assignees: [String]
+  labels: [String]
+  user: User
+}
+
+type Query {
+  issues(pathname: String): [Issues]
+}

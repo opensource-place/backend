@@ -1,21 +1,54 @@
 require("dotenv").config();
 const express = require("express");
-const connectDatabase = require("./helpers/connectDatabase");
-const mainRouter = require("./routes/mainRouter");
-const app = express();
+const connect = require("./db");
 const cors = require("cors");
+const PORT = process.env.PORT || 8080;
+const { ApolloServer, gql } = require("apollo-server-express");
+const app = express();
+const fs = require('fs')
+const path = require('path')
+const { addRepository, getIssues } = require("./controllers");
 
-// Main Router
+const schema = fs.readFileSync(
+  path.resolve(__dirname, "./models/issues.graphql"), 'utf-8'
+);
+
+const typeDefs = gql(schema);
+
+const resolvers = {
+  Query: {
+    issues: async (_, {url}) => {
+      const data = await getIssues(url)
+      return data.issues;
+    },
+  },
+};
+
+const server = new ApolloServer({ typeDefs, resolvers });
+
+server.applyMiddleware({ app });
+
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(mainRouter);
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: false }));
 
-// Mongo Connection
-connectDatabase();
+app.post("/repository", async (req, res) => {
+  const { url } = req.body;
 
-// listen
-const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => console.log(`running on ${PORT}`));
+  if (!url) {
+    res.status(400).json({ message: "https://http.cat/400" });
+  }
+
+  addRepository(url)
+    .then((issues) => {
+      res.json({ message: "https://http.cat/200" });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(503).json({ message: "https://http.cat/503" });
+    });
+});
+
+connect().then(() => {
+  app.listen(PORT, "0.0.0.0", () => console.log(`running on ${PORT}`));
+});
