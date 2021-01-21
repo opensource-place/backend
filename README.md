@@ -43,11 +43,11 @@ fetch("http://localhost:8080/repository", {
 ```javascript
 const query = `{
   issues(pathname: "/cagatay/lazy/") {
+    repository_url
+    title
     user {
       login
     }
-    repository_url
-    title
     created_at
   }
 }`
