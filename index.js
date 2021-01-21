@@ -7,7 +7,7 @@ const { ApolloServer, gql } = require("apollo-server-express");
 const app = express();
 const fs = require('fs')
 const path = require('path')
-const { addRepository, getIssues } = require("./controllers");
+const { addRepository, getRepositories, getIssues } = require("./controllers");
 
 const schema = fs.readFileSync(
   path.resolve(__dirname, "./models/issues.graphql"), 'utf-8'
@@ -17,8 +17,12 @@ const typeDefs = gql(schema);
 
 const resolvers = {
   Query: {
-    issues: async (_, {url}) => {
-      const data = await getIssues(url)
+    repositories: async () => {
+      const data = await getRepositories();
+      return data;
+    },
+    issues: async (_, { url }) => {
+      const data = await getIssues(url);
       return data.issues;
     },
   },

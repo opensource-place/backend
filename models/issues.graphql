@@ -47,6 +47,12 @@ type Issues {
   user: User
 }
 
+type Repository {
+  pathname: String
+  issues: [Issues]
+}
+
 type Query {
+  repositories: [Repository]  
   issues(pathname: String): [Issues]
 }
