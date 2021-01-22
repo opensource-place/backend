@@ -5,12 +5,18 @@ const cors = require("cors");
 const PORT = process.env.PORT || 8080;
 const { ApolloServer, gql } = require("apollo-server-express");
 const app = express();
-const fs = require('fs')
-const path = require('path')
-const { addRepository, getRepositories, getIssues, getLabels } = require("./controllers");
+const fs = require("fs");
+const path = require("path");
+const {
+  addRepository,
+  getRepositories,
+  getIssues,
+  getLabels,
+} = require("./controllers");
 
 const schema = fs.readFileSync(
-  path.resolve(__dirname, "./models/issues.graphql"), 'utf-8'
+  path.resolve(__dirname, "./models/issues.graphql"),
+  "utf-8"
 );
 
 const typeDefs = gql(schema);
@@ -21,8 +27,8 @@ const resolvers = {
       const data = await getRepositories();
       return data;
     },
-    issues: async (_, { url }) => {
-      const data = await getIssues(url);
+    issues: async (_, { pathname }) => {
+      const data = await getIssues(pathname);
       return data.issues;
     },
     label: async (_, { url }) => {
