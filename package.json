@@ -4,10 +4,10 @@
   "description": "- We want to build a platform which contents open-source projects. You can list all published open-source projects and also you can publish your project too from GitHub.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "cd server && node index.js",
-    "start-watch": "cd server && nodemon index.js",
-    "dev": "concurrently \"cd server && npm run start-watch\" \"cd client && npm start\""
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "repository": {
     "type": "git",
@@ -21,9 +21,21 @@
   },
   "homepage": "https://github.com/FurkanPortakal/opensourceadam#readme",
   "dependencies": {
+    "apollo-server": "^2.19.2",
+    "apollo-server-express": "^2.19.2",
+    "axios": "^0.21.1",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "dotenv": "^8.2.0",
+    "eslint": "^7.12.1",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.22.0",
     "express": "^4.17.1",
     "got": "^11.8.1",
+    "graphql": "^15.4.0",
     "mongoose": "^5.11.8",
     "nodemon": "^2.0.6",
     "prettier": "^2.2.1"
