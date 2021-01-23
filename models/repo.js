@@ -1,18 +1,18 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose')
 
 const Repository = new mongoose.Schema({
   pathname: {
     type: String,
-    require: true,
+    require: true
   },
   issues: {
     type: Array,
-    require: true,
+    require: true
   },
   updatedTime: {
     type: Date,
-    default: new Date(),
-  },
-});
+    default: new Date()
+  }
+})
 
-module.exports = mongoose.model("repo", Repository);
+module.exports = mongoose.model('repo', Repository)
