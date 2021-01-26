@@ -3,11 +3,11 @@ const mongoose = require('mongoose')
 const Repository = new mongoose.Schema({
   pathname: {
     type: String,
-    require: true
+    required: true
   },
   issues: {
     type: Array,
-    require: true
+    required: true
   },
   updatedTime: {
     type: Date,
