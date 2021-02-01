@@ -8,7 +8,7 @@ async function getIssues (user, repository) {
   // Conf
   let config = {
     headers: {
-      Authorization: 'token 4b735e1c006861a6e668b9f74e8ed191e8a897d4',
+      Authorization: 'token ' + process.env.GITHUB_TOKEN,
     }
   }
 
