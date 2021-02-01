@@ -50,7 +50,7 @@ app.post('/repository', async (req, res) => {
   const { url } = req.body
 
   if (!url) {
-    res.status(400).json({ message: 'Bad Request: 400' })
+    res.status(400).json({ message: 'https://http.cat/400' })
   }
 
   addRepository(url)
@@ -58,8 +58,8 @@ app.post('/repository', async (req, res) => {
       res.json({ message: 'Ok: 203' })
     })
     .catch((err) => {
-      res.status(404).jsonp({ message: 'Page Not Found: 404' })
-      res.status(503).json({ message: 'Service Unavailable: 503' })
+      res.status(404).json({ message: 'https://http.cat/404' })
+      res.status(503).json({ message: 'https://http.cat/503' })
       console.log(err)
     })
 })
