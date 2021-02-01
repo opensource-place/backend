@@ -1,14 +1,12 @@
-/* eslint-disable */
-// const got = require('got')
-const axios = require('axios');
+const axios = require('axios')
 
 // gather issues
 async function getIssues (user, repository) {
-
   // Conf
-  let config = {
+  const config = {
     headers: {
-      Authorization: 'token ' + process.env.GITHUB_TOKEN,
+      accept: 'application/json',
+      authorization: 'token ' + process.env.GITHUB_TOKEN
     }
   }
 
@@ -23,7 +21,7 @@ async function getIssues (user, repository) {
 
   for (let i = pages; i > 0; i--) {
     console.log('-----------------------------------')
-    const newUrl = await axios.get(`https://api.github.com/repos/${user}/${repository}/issues?state=all&per_page=99&page=${i}`, config)
+    const newUrl = await axios.get(`https://api.github.com/repos/${user}/${repository}/issues?state=all&per_page=100&page=${i}`, config)
     console.log(newUrl.data)
   }
   */
