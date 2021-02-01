@@ -55,11 +55,12 @@ app.post('/repository', async (req, res) => {
 
   addRepository(url)
     .then((issues) => {
-      res.json({ message: 'https://http.cat/200' })
+      res.json({ message: 'Ok: 203' })
     })
     .catch((err) => {
-      console.log(err)
+      res.status(404).json({ message: 'https://http.cat/404' })
       res.status(503).json({ message: 'https://http.cat/503' })
+      console.log(err)
     })
 })
 
