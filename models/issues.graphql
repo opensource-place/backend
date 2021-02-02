@@ -50,10 +50,13 @@ type Issues {
 type Repository {
   pathname: String
   issues: [Issues]
+  description: String
+  forks_count: Int
+  stargazers_count: Int
 }
 
 type Query {
-  repositories: [Repository]  
+  repositories: [Repository]
   issues(pathname: String): [Issues]
   label(pathname: String, label: String): [Issues]
 }

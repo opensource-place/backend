@@ -9,6 +9,18 @@ const Repository = new mongoose.Schema({
     type: Array,
     required: true
   },
+  stargazers_count: {
+    type: Number,
+    required: true
+  },
+  forks_count: {
+    type: Number,
+    required: true
+  },
+  description: {
+    type: String,
+    required: true
+  },
   updatedTime: {
     type: Date,
     default: new Date()
