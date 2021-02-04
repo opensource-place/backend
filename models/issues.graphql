@@ -84,6 +84,7 @@ type Repository {
 }
 
 type Query {
+  repository(pathname: String): Repository
   repositories: [Repository]
   issues(pathname: String): [Issues]
   label(pathname: String, label: String): [Issues]
