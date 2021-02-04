@@ -27,7 +27,6 @@ const resolvers = {
     },
     issues: async (_, { pathname }) => {
       const data = await getIssues(pathname)
-      console.log(data)
       return data.issues
     },
     label: async (_, { url }) => {
