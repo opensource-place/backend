@@ -1,5 +1,5 @@
 const { Repository } = require('../models')
-const { getIssues, getForkStarDesc } = require('../utils')
+const { getIssues, getForkStarDesc, getLanguages, getContributors } = require('../utils')
 
 const addRepository = async (url) => {
   const { host, pathname } = new URL(url)
@@ -22,9 +22,17 @@ const addRepository = async (url) => {
     repository
   ).catch((err) => {
     console.log(err)
-    throw new Error(
-      'Error when getting fork, stargazers count and description'
-    )
+    throw new Error('Error when getting fork, stargazers count and description')
+  })
+
+  const languages = await getLanguages(user, repository).catch((err) => {
+    console.log(err)
+    throw new Error('Error when getting languages')
+  })
+
+  const contributors = await getContributors(user, repository).catch((err) => {
+    console.log(err)
+    throw new Error('Error when getting contributors')
   })
 
   await Repository.findOneAndUpdate(
@@ -34,7 +42,9 @@ const addRepository = async (url) => {
       pathname,
       stargazers_count,
       forks_count,
-      description
+      description,
+      languages,
+      contributors
     },
     { upsert: true }
   ).catch((err) => {
