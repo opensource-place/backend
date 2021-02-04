@@ -11,13 +11,11 @@ const {
   addRepository,
   getRepositories,
   getIssues,
-  getLabels
+  getLabels,
+  getSpecificRepository
 } = require('./controllers')
 
-const schema = fs.readFileSync(
-  path.resolve(__dirname, './models/issues.graphql'),
-  'utf-8'
-)
+const schema = fs.readFileSync(path.resolve(__dirname, './models/issues.graphql'), 'utf-8')
 
 const typeDefs = gql(schema)
 
@@ -29,11 +27,16 @@ const resolvers = {
     },
     issues: async (_, { pathname }) => {
       const data = await getIssues(pathname)
+      console.log(data)
       return data.issues
     },
     label: async (_, { url }) => {
       const data = await getLabels(url)
       return data.issues
+    },
+    repository: async (_, { pathname }) => {
+      const data = await getSpecificRepository(pathname)
+      return data
     }
   }
 }
