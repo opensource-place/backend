@@ -21,6 +21,14 @@ const Repository = new mongoose.Schema({
     type: String,
     required: true
   },
+  languages: {
+    type: Object,
+    required: true
+  },
+  contributors: {
+    type: Array,
+    required: true
+  },
   updatedTime: {
     type: Date,
     default: new Date()
