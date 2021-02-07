@@ -19,6 +19,16 @@ type User {
   site_admin: Boolean
 }
 
+type Labels {
+  id: Int
+  node_id: String
+  url: String
+  name: String
+  color: String
+  default: Boolean
+  description: String
+}
+
 type Issues {
   url: String
   repository_url: String
@@ -43,14 +53,16 @@ type Issues {
   body: String
   performed_via_github_app: String
   assignees: [String]
-  labels: [String]
+  labels: [Labels]
   user: User
 }
+
 type Languages {
   JavaScript: Int
   HTML: Int
   CSS: Int
 }
+
 type Contributor {
   login: String
   id: Int
