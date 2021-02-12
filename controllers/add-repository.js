@@ -1,6 +1,11 @@
 const { Repository } = require('../models')
 const { getIssues, getForkStarDesc, getLanguages, getContributors } = require('../utils')
 
+const algoliasearch = require('algoliasearch')
+
+const client = algoliasearch(process.env.ALGOLIA_KEY_ONE, process.env.ALGOLIA_KEY_TWO)
+const index = client.initIndex('repository')
+
 const addRepository = async (url) => {
   const { host, pathname } = new URL(url)
 
@@ -35,7 +40,7 @@ const addRepository = async (url) => {
     throw new Error('Error when getting contributors')
   })
 
-  await Repository.findOneAndUpdate(
+  const createdRepo = await Repository.findOneAndUpdate(
     { pathname },
     {
       issues,
@@ -51,6 +56,15 @@ const addRepository = async (url) => {
     console.log(err)
     throw new Error('Error when upserting document')
   })
+  const algoliaRepo = { ...createdRepo._doc, objectID: createdRepo._id }
+  console.log(algoliaRepo)
+  index
+    .saveObjects([algoliaRepo], { autoGenerateObjectIDIfNotExist: false })
+    .then()
+    .catch((err) => {
+      console.log(err)
+      throw new Error('Error while saving through to algolia')
+    })
 
   return issues
 }
