@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/FurkanPortakal/opensourceadam#readme",
   "dependencies": {
+    "algoliasearch": "^4.8.5",
     "apollo-server": "^2.19.2",
     "apollo-server-express": "^2.19.2",
     "axios": "^0.21.1",
