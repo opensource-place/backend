@@ -1,8 +1,4 @@
 const axios = require('axios')
-const algoliasearch = require('algoliasearch')
-
-const client = algoliasearch(process.env.ALGOLIA_KEY_ONE, process.env.ALGOLIA_KEY_TWO)
-const index = client.initIndex('issues')
 
 // gather issues
 async function getIssues(user, repository) {
@@ -19,12 +15,6 @@ async function getIssues(user, repository) {
     `https://api.github.com/repos/${user}/${repository}/issues?state=open&per_page=100&page=1`,
     config
   )
-  index
-    .saveObjects(url.data, { autoGenerateObjectIDIfNotExist: true })
-    .then()
-    .catch((error) => {
-      console.log(error)
-    })
   return url.data
 
   /* WORK IN PROGRESS
