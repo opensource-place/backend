@@ -2,7 +2,6 @@ const axios = require('axios')
 
 // gather issues
 async function getIssues(user, repository) {
-  // Conf
   const config = {
     headers: {
       accept: 'application/json',

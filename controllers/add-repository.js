@@ -40,7 +40,7 @@ const addRepository = async (url) => {
     throw new Error('Error when getting contributors')
   })
 
-  const createdRepo = await Repository.findOneAndUpdate(
+  await Repository.findOneAndUpdate(
     { pathname },
     {
       issues,
@@ -56,10 +56,23 @@ const addRepository = async (url) => {
     console.log(err)
     throw new Error('Error when upserting document')
   })
-  const algoliaRepo = { ...createdRepo._doc, objectID: createdRepo._id }
-  console.log(algoliaRepo)
+
   index
-    .saveObjects([algoliaRepo], { autoGenerateObjectIDIfNotExist: false })
+    .saveObjects(
+      [
+        {
+          issues,
+          pathname,
+          stargazers_count,
+          forks_count,
+          description,
+          languages,
+          contributors,
+          objectID: pathname
+        }
+      ],
+      { autoGenerateObjectIDIfNotExist: false }
+    )
     .then()
     .catch((err) => {
       console.log(err)
