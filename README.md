@@ -21,8 +21,6 @@ yarn install
 yarn start
 ```
 
-## CSS Library
-We use tailwind css as the css library. You can access the documentation [here](https://tailwindcss.com/docs).
 
 ## 📙 Features to be added
 - [ ] TODO
