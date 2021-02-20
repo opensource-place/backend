@@ -19,6 +19,16 @@ type User {
   site_admin: Boolean
 }
 
+type Labels {
+  id: Int
+  node_id: String
+  url: String
+  name: String
+  color: String
+  default: Boolean
+  description: String
+}
+
 type Issues {
   url: String
   repository_url: String
@@ -43,17 +53,51 @@ type Issues {
   body: String
   performed_via_github_app: String
   assignees: [String]
-  labels: [String]
+  labels: [Labels]
   user: User
+}
+
+type Languages {
+  JavaScript: Int
+  HTML: Int
+  CSS: Int
+}
+
+type Contributor {
+  login: String
+  id: Int
+  node_id: String
+  avatar_url: String
+  gravatar_id: String
+  url: String
+  html_url: String
+  followers_url: String
+  following_url: String
+  gists_url: String
+  starred_url: String
+  subscriptions_url: String
+  organizations_url: String
+  repos_url: String
+  events_url: String
+  received_events_url: String
+  type: String
+  site_admin: Boolean
+  contributions: Int
 }
 
 type Repository {
   pathname: String
   issues: [Issues]
+  description: String
+  forks_count: Int
+  stargazers_count: Int
+  languages: Languages
+  contributors: [Contributor]
 }
 
 type Query {
-  repositories: [Repository]  
+  repository(pathname: String): Repository
+  repositories: [Repository]
   issues(pathname: String): [Issues]
   label(pathname: String, label: String): [Issues]
 }

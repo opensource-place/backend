@@ -11,13 +11,11 @@ const {
   addRepository,
   getRepositories,
   getIssues,
-  getLabels
+  getLabels,
+  getSpecificRepository
 } = require('./controllers')
 
-const schema = fs.readFileSync(
-  path.resolve(__dirname, './models/issues.graphql'),
-  'utf-8'
-)
+const schema = fs.readFileSync(path.resolve(__dirname, './models/issues.graphql'), 'utf-8')
 
 const typeDefs = gql(schema)
 
@@ -34,6 +32,10 @@ const resolvers = {
     label: async (_, { url }) => {
       const data = await getLabels(url)
       return data.issues
+    },
+    repository: async (_, { pathname }) => {
+      const data = await getSpecificRepository(pathname)
+      return data
     }
   }
 }
@@ -50,16 +52,16 @@ app.post('/repository', async (req, res) => {
   const { url } = req.body
 
   if (!url) {
-    res.status(400).json({ message: 'https://http.cat/400' })
+    res.status(400).json({ message: 'http://http.cat/400' })
   }
 
   addRepository(url)
     .then((issues) => {
-      res.json({ message: 'https://http.cat/200' })
+      res.json({ message: 'Ok: 203', status: true })
     })
     .catch((err) => {
+      res.status(404).json({ message: 'http://http.cat/404', status: false })
       console.log(err)
-      res.status(503).json({ message: 'https://http.cat/503' })
     })
 })
 
